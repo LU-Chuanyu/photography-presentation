@@ -370,30 +370,63 @@ def add_photo_slide(prs, number, title, year, tag, notes):
     _set_notes(slide, notes)
 
 
+# Suggested holding institution / archive for each photograph. Sudek's work is
+# still under copyright (he died in 1976), so these are reference sources for the
+# reproductions, not public-domain releases. Verify the exact provenance of the
+# file you used against the institution before presenting.
+CREDITS = {
+    1: "National Gallery of Canada / Nasjonalmuseet",
+    2: "Sudek panorama series \u2014 various public collections",
+    3: "Sudek panorama series \u2014 various public collections",
+    4: "Sudek Project archive (sudekproject.cz)",
+    5: "Museum of Modern Art (MoMA) / National Gallery of Canada",
+    6: "National Gallery of Canada",
+    7: "Sudek Project archive (sudekproject.cz)",
+    8: "Sudek Project archive (sudekproject.cz)",
+    9: "Museum of Modern Art (MoMA)",
+    10: "Museum of Modern Art (MoMA)",
+    11: "Museum of Modern Art (MoMA)",
+    12: "National Gallery of Canada",
+    13: "Sudek panorama series \u2014 various public collections",
+    14: "Sudek Project archive (sudekproject.cz)",
+    15: "Cleveland Museum of Art / National Gallery of Canada",
+}
+
+
 def add_credits_slide(prs):
     slide = _blank(prs)
     _set_gradient_background(slide)
-    tf = _add_textbox(slide, Inches(1), Inches(0.9), Inches(11.33), Inches(1.0))
+    tf = _add_textbox(slide, Inches(1), Inches(0.6), Inches(11.33), Inches(0.9))
     r = tf.paragraphs[0].add_run()
     r.text = "Image Credits"
     _style_run(r, 30, INK, bold=True)
 
-    _add_accent_rule(slide, Inches(1.85))
+    _add_accent_rule(slide, Inches(1.5))
 
-    body = _add_textbox(slide, Inches(1), Inches(2.1), Inches(11.33), Inches(4.6))
+    note = _add_textbox(slide, Inches(1), Inches(1.6), Inches(11.33), Inches(0.6))
+    rn = note.paragraphs[0].add_run()
+    rn.text = ("All photographs \u00a9 Estate of Josef Sudek. Reproduced here for "
+               "educational, non-commercial use only.")
+    _style_run(rn, 13, MUTED, italic=True)
+
+    body = _add_textbox(slide, Inches(1), Inches(2.25), Inches(11.33), Inches(4.6))
     first = True
     for number, title, year, _tag, _notes in PHOTOS:
         p = body.paragraphs[0] if first else body.add_paragraph()
         first = False
         run = p.add_run()
-        run.text = f"{number}. {title} ({year}) \u2014 source / license: ____"
-        _style_run(run, 12, INK)
-        p.space_after = Pt(4)
+        source = CREDITS.get(number, "see images/sources.md")
+        run.text = f"{number}. {title} ({year}) \u2014 {source}"
+        _style_run(run, 11, INK)
+        p.space_after = Pt(3)
     _set_notes(slide,
-               "List the source and licensing for each image here. Use "
-               "public-domain or properly licensed reproductions only, and verify "
-               "each title and year against the holding institution before "
-               "presenting.")
+               "All images are reproductions of works by Josef Sudek, whose "
+               "estate still holds copyright (he died in 1976), shown here for "
+               "educational, non-commercial use. The listed institutions are the "
+               "suggested reference sources; verify the exact provenance and the "
+               "title and year of each file you used against the holding "
+               "institution before presenting. Full search links are in "
+               "images/sources.md.")
 
 
 def build(output):
