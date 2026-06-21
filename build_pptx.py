@@ -254,12 +254,16 @@ def add_cover(prs):
     _add_accent_rule(slide, Inches(5.3), left=Inches(5.67), width=Inches(2.0))
 
     _set_notes(slide,
-               "Good morning, everyone. Today I want to introduce a photographer "
-               "who saw the whole world through a single window \u2014 and who "
-               "made every one of his images with only one hand. His name is "
-               "Josef Sudek, often called 'the Poet of Prague.' My talk is The "
-               "World in One Hand, and my single question is: how did a physical "
-               "limitation become an artistic style? (0:30)")
+               "Good morning, everyone \u2014 thank you all for being here. Before "
+               "I start, let me ask you something: have you ever felt that having "
+               "less actually made you more creative? Hold that thought. Today I "
+               "want to introduce a photographer who saw the whole world through a "
+               "single window \u2014 and who made every one of his images with only "
+               "one hand. His name is Josef Sudek, often called 'the Poet of "
+               "Prague.' My talk is The World in One Hand, and honestly, the whole "
+               "thing comes down to one question I kept asking myself: how did a "
+               "physical limitation become an artistic style? Let's find out "
+               "together. (0:30)")
 
 
 def add_portrait_slide(prs):
@@ -302,12 +306,14 @@ def add_portrait_slide(prs):
         p.space_after = Pt(10)
 
     _set_notes(slide,
-               "This is the man himself: Josef Sudek, born in 1896, who lived "
-               "and worked almost his entire life in Prague. He made every one "
-               "of his photographs with a single hand, using a heavy "
-               "large-format camera. Keep his face in mind as we look at how he "
-               "turned a wartime injury into one of the most poetic styles in "
-               "photography.")
+               "So this is the man himself \u2014 take a good look at that face. "
+               "Josef Sudek, born in 1896, who lived and worked almost his entire "
+               "life in Prague. Now here is the detail that always stops people: "
+               "he made every single one of his photographs with just one hand, "
+               "hauling around a heavy large-format camera. Try to imagine doing "
+               "that on a tripod, by yourself, for fifty years. Keep his face in "
+               "mind, because we're about to see how he turned a wartime injury "
+               "into one of the most poetic styles in all of photography.")
 
 
 def add_text_slide(prs, title, body_lines, notes):
@@ -447,11 +453,15 @@ def build(output):
          "Lost his right arm in the First World War.",
          "Chose the large-format view camera \u2014 slow, deliberate work on a tripod.",
          "Spent his life in Prague: 'the Poet of Prague.'"],
-        "Josef Sudek was born in Bohemia in 1896. In the First World War he lost "
-        "his right arm. For most people that would end a photographic career. But "
-        "Sudek leaned into the limitation: he gave up fast, handheld photography "
-        "and committed to the large-format view camera, which forces you to slow "
-        "down. He spent almost his whole life in Prague. (1:30)")
+        "Josef Sudek was born in Bohemia in 1896. Then the First World War came, "
+        "and he lost his right arm. Just think about that for a second \u2014 for "
+        "most people that's the end of a photographic career; a camera is hard "
+        "enough to handle with two hands. But here's what fascinates me about "
+        "Sudek: instead of fighting the limitation, he leaned right into it. He "
+        "gave up fast, handheld photography and committed to the large-format "
+        "view camera, the kind of slow, deliberate instrument that forces you to "
+        "slow down. And he spent almost his whole life right here in Prague \u2014 "
+        "which is exactly why they call him the Poet of Prague. (1:30)")
 
     # 3. Main idea
     add_text_slide(
@@ -461,11 +471,14 @@ def build(output):
          "Four qualities organize this talk:",
          "SLOW  \u00b7  CLOSE  \u00b7  REPEATED  \u00b7  SOLITARY",
          "Every photograph is evidence for one of them."],
-        "Here is the argument of this talk. Sudek's limitation pushed him toward "
-        "one way of working \u2014 slow, close, and patient \u2014 and that became "
-        "his signature style. I've organized his photographs not by subject, but "
-        "by four qualities that grow from that single limitation: Slow, Close, "
-        "Repeated, and Solitary. (1:00)")
+        "Okay, so here's the whole argument of my talk in a nutshell. Sudek's "
+        "limitation quietly pushed him toward one particular way of working "
+        "\u2014 slow, close, and patient \u2014 and over time that became his "
+        "signature style. So instead of organizing his photographs by subject, "
+        "the usual way, I've grouped them by four qualities that all grow out of "
+        "that single limitation: Slow, Close, Repeated, and Solitary. Keep these "
+        "four words in the back of your mind \u2014 every photograph you're about "
+        "to see is really evidence for one of them. (1:00)")
 
     # 4..18 One photo per slide
     for number, title, year, tag, notes in PHOTOS:
@@ -479,11 +492,14 @@ def build(output):
          "He stayed close, so he repeated intimate subjects for years.",
          "The result: stillness and solitude.",
          "The constraint didn't shrink his world \u2014 it concentrated it."],
-        "So how did a limitation become a style? He lost his arm, so he worked "
-        "slowly. He worked slowly, so he stayed close. He stayed close, so he "
-        "repeated the same intimate subjects for years. Out of that came a body "
-        "of work defined by stillness and solitude. The constraint didn't shrink "
-        "his world \u2014 it concentrated it. (1:30)")
+        "So let's circle back to the question I asked at the very beginning. How "
+        "did a limitation become a style? Follow the chain with me: he lost his "
+        "arm, so he worked slowly. He worked slowly, so he stayed close. He "
+        "stayed close, so he ended up repeating the same intimate subjects for "
+        "years. And out of all of that came a body of work defined by stillness "
+        "and solitude. This is the part I find genuinely moving \u2014 the "
+        "constraint didn't shrink his world, it concentrated it. He found the "
+        "infinite inside one small studio, one window, one garden. (1:30)")
 
     # 20. Conclusion & Q&A
     add_text_slide(
@@ -492,11 +508,14 @@ def build(output):
          "Sometimes it's about going deeper into less.",
          "One hand, one window \u2014 some of the most poetic photographs of the 20th century.",
          "Thank you. Questions?"],
-        "Josef Sudek shows us that creativity isn't about having more \u2014 more "
-        "mobility, more subjects, more equipment. Sometimes it's about going "
-        "deeper into less. His single hand, his single window, gave us some of "
-        "the most poetic photographs of the twentieth century. Thank you for "
-        "listening \u2014 I'd love to hear your questions. (1:00)")
+        "So if you take just one thing away today, let it be this. Josef Sudek "
+        "shows us that creativity isn't really about having more \u2014 more "
+        "mobility, more subjects, more expensive equipment. Sometimes it's about "
+        "going deeper into less. With his single hand and his single window he "
+        "gave us some of the most poetic photographs of the entire twentieth "
+        "century. And maybe that's worth remembering the next time we feel "
+        "limited by something ourselves. Thank you so much for listening \u2014 "
+        "now I'd love to hear your questions. (1:00)")
 
     # Credits
     add_credits_slide(prs)

@@ -8,36 +8,42 @@
 ---
 
 ## Slide 1 — Cover (0:30)
-"Good morning, everyone. Today I want to introduce a photographer who saw the
+"Good morning, everyone — thank you all for being here. Before I start, let me
+ask you something: have you ever felt that having *less* actually made you more
+creative? Hold that thought. Today I want to introduce a photographer who saw the
 whole world through a single window — and who made every one of his images with
 only one hand. His name is Josef Sudek, often called 'the Poet of Prague.'
-My talk is *The World in One Hand*, and my single question is: how did a physical
-limitation become an artistic style?"
+My talk is *The World in One Hand*, and honestly, the whole thing comes down to
+one question I kept asking myself: how did a physical limitation become an
+artistic style? Let's find out together."
 
 [Hold on the studio-window cover image before advancing.]
 
 ---
 
 ## Slide 2 — Who Was Josef Sudek? (1:30)
-"Josef Sudek was born in Bohemia in 1896. In the First World War he lost his
-right arm. For most people that would end a photographic career — a camera is
-hard to handle with one arm. But Sudek made a radical choice: instead of fighting
-the limitation, he leaned into it. He gave up fast, handheld photography and
-committed to the large-format view camera — a heavy instrument on a tripod that
-forces you to slow down. He spent almost his whole life in Prague, working
-quietly in his small studio and garden. That is why he is called the Poet of
-Prague."
+"Josef Sudek was born in Bohemia in 1896. Then the First World War came, and he
+lost his right arm. Just think about that for a second — for most people that's
+the end of a photographic career; a camera is hard enough to handle with two
+hands. But here's what fascinates me about Sudek: instead of fighting the
+limitation, he made a radical choice and leaned right into it. He gave up fast,
+handheld photography and committed to the large-format view camera — a heavy
+instrument on a tripod that forces you to slow down. He spent almost his whole
+life in Prague, working quietly in his small studio and garden. And that, really,
+is why they call him the Poet of Prague."
 
 [Deliver 'lost his right arm' slowly — it is the hook.]
 
 ---
 
 ## Slide 3 — The Main Idea (1:00)
-"Here is the argument of this talk. Sudek's limitation pushed him toward one
-particular way of working — slow, close, and patient — and that became his
-signature style. I've organized his photographs not by subject, but by four
-qualities that all grow from that single limitation: Slow, Close, Repeated, and
-Solitary. Every image we look at is evidence for one of these four words."
+"Okay, so here's the whole argument of my talk in a nutshell. Sudek's limitation
+quietly pushed him toward one particular way of working — slow, close, and
+patient — and over time that became his signature style. So instead of organizing
+his photographs by subject, the usual way, I've grouped them by four qualities
+that all grow out of that single limitation: Slow, Close, Repeated, and Solitary.
+Keep these four words in the back of your mind — every image we look at is really
+evidence for one of them."
 
 ---
 
@@ -135,20 +141,24 @@ silence and memory. For me, this is the emotional heart of his entire body of wo
 ---
 
 ## Slide 19 — Bringing It Together (1:30)
-"So let's return to our question. How did a limitation become a style? Sudek lost
-his arm, so he worked slowly. He worked slowly, so he stayed close. He stayed
-close, so he repeated the same intimate subjects for years. And out of all that
-came a body of work defined by stillness and solitude. The constraint didn't
-shrink his world — it concentrated it. He found the infinite inside one small
-studio, one window, one garden."
+"So let's circle back to the question I asked at the very beginning. How did a
+limitation become a style? Follow the chain with me: Sudek lost his arm, so he
+worked slowly. He worked slowly, so he stayed close. He stayed close, so he
+repeated the same intimate subjects for years. And out of all that came a body of
+work defined by stillness and solitude. This is the part I find genuinely moving:
+the constraint didn't shrink his world — it concentrated it. He found the
+infinite inside one small studio, one window, one garden."
 
 ---
 
 ## Slide 20 — Conclusion & Q&A (1:00)
-"Josef Sudek shows us that creativity isn't about having more — more mobility, more
-subjects, more equipment. Sometimes it's about going deeper into less. His single
-hand, his single window, gave us some of the most poetic photographs of the
-twentieth century. Thank you for listening — I'd love to hear your questions."
+"So if you take just one thing away today, let it be this. Josef Sudek shows us
+that creativity isn't really about having more — more mobility, more subjects,
+more expensive equipment. Sometimes it's about going deeper into less. With his
+single hand and his single window, he gave us some of the most poetic photographs
+of the entire twentieth century. And maybe that's worth remembering the next time
+we feel limited by something ourselves. Thank you so much for listening — now I'd
+love to hear your questions."
 
 [Leave Photo 15, or the cover image, on screen during Q&A.]
 
