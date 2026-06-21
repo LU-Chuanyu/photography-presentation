@@ -18,6 +18,20 @@ python build_pptx.py            # writes Josef-Sudek-Presentation.pptx
 python build_pptx.py --output my-deck.pptx
 ```
 
-Each photo slide contains a placeholder box. Replace the placeholders with
-public-domain or properly licensed reproductions, and complete the image-credits
-slide before presenting.
+## Adding the real photographs (automatic)
+
+Drop the images into the `images/` folder using these exact base names and
+re-run `python build_pptx.py`:
+
+- `portrait.jpg` — the photographer portrait near the start
+- `photo01.jpg` … `photo15.jpg` — the 15 photographs (note the two-digit numbering)
+
+Accepted extensions: `.jpg`, `.jpeg`, `.png`, `.gif`, `.bmp`, `.tif`, `.tiff`,
+`.webp`. Each image is scaled to fit its slot without cropping and centered,
+so portrait or landscape photos both work. Any image that is missing falls
+back to a labelled placeholder box, and the script prints how many of the 16
+images were embedded. See `images/README.md` for the full name-to-slide map.
+Use a different folder with `python build_pptx.py --images-dir path/to/folder`.
+
+Use public-domain or properly licensed reproductions, and complete the
+image-credits slide before presenting.

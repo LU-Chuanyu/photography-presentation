@@ -18,6 +18,7 @@ before presenting, and fill in the credits slide.
 from __future__ import annotations
 
 import argparse
+import os
 
 from pptx import Presentation
 from pptx.dml.color import RGBColor
@@ -28,6 +29,16 @@ from pptx.util import Inches, Pt
 # 16:9 canvas
 SLIDE_W = Inches(13.333)
 SLIDE_H = Inches(7.5)
+
+# Folder that holds the real photographs. Drop files here and re-run the
+# script: any matching file is embedded automatically, otherwise the slide
+# falls back to a labelled placeholder box.
+#   - portrait.(jpg|jpeg|png|gif|bmp|tif|tiff|webp)   -> photographer portrait
+#   - photo01.(...) ... photo15.(...)                 -> the 15 photographs
+DEFAULT_IMAGE_DIR = "images"
+IMAGE_DIR = DEFAULT_IMAGE_DIR
+IMAGE_EXTENSIONS = (".jpg", ".jpeg", ".png", ".gif", ".bmp",
+                    ".tif", ".tiff", ".webp")
 
 FONT = "Calibri"
 
@@ -163,6 +174,59 @@ def _blank(prs):
     return prs.slides.add_slide(prs.slide_layouts[6])
 
 
+def _find_image(stem):
+    """Return the path to images/<stem>.<ext> if one exists, else None."""
+    for ext in IMAGE_EXTENSIONS:
+        path = os.path.join(IMAGE_DIR, stem + ext)
+        if os.path.isfile(path):
+            return path
+    return None
+
+
+def _add_fitted_picture(slide, path, left, top, width, height):
+    """Embed an image centered inside the box, preserving its aspect ratio.
+
+    The picture is scaled to fit entirely within (width, height) ("contain"),
+    so nothing is cropped, and then centered within the box.
+    """
+    # Insert at native size first to read the image's real proportions.
+    pic = slide.shapes.add_picture(path, left, top)
+    native_w, native_h = pic.width, pic.height
+    scale = min(width / native_w, height / native_h)
+    new_w = int(native_w * scale)
+    new_h = int(native_h * scale)
+    pic.width = new_w
+    pic.height = new_h
+    pic.left = int(left + (width - new_w) / 2)
+    pic.top = int(top + (height - new_h) / 2)
+    pic.shadow.inherit = False
+    return pic
+
+
+def _add_image_or_placeholder(slide, stem, left, top, width, height,
+                              placeholder_text, placeholder_size=18):
+    """Embed images/<stem>.* if present; otherwise draw a placeholder box."""
+    path = _find_image(stem)
+    if path is not None:
+        return _add_fitted_picture(slide, path, left, top, width, height)
+
+    ph = slide.shapes.add_shape(MSO_SHAPE.RECTANGLE, left, top, width, height)
+    ph.fill.solid()
+    ph.fill.fore_color.rgb = PLACEHOLDER
+    ph.line.color.rgb = MUTED
+    ph.line.width = Pt(1)
+    ph.shadow.inherit = False
+    ptf = ph.text_frame
+    ptf.word_wrap = True
+    ptf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    pr = ptf.paragraphs[0]
+    pr.alignment = PP_ALIGN.CENTER
+    run = pr.add_run()
+    run.text = placeholder_text
+    _style_run(run, placeholder_size, MUTED, italic=True)
+    return ph
+
+
 def add_cover(prs):
     slide = _blank(prs)
     _set_gradient_background(slide)
@@ -203,22 +267,11 @@ def add_portrait_slide(prs):
     _set_gradient_background(slide)
 
     # Portrait image placeholder on the left
-    ph = slide.shapes.add_shape(
-        MSO_SHAPE.RECTANGLE,
-        Inches(0.9), Inches(1.1), Inches(4.6), Inches(5.3))
-    ph.fill.solid()
-    ph.fill.fore_color.rgb = PLACEHOLDER
-    ph.line.color.rgb = MUTED
-    ph.line.width = Pt(1)
-    ph.shadow.inherit = False
-    ptf = ph.text_frame
-    ptf.word_wrap = True
-    ptf.vertical_anchor = MSO_ANCHOR.MIDDLE
-    pr = ptf.paragraphs[0]
-    pr.alignment = PP_ALIGN.CENTER
-    run = pr.add_run()
-    run.text = "[ Portrait of Josef Sudek \u2014 insert image here ]"
-    _style_run(run, 16, MUTED, italic=True)
+    _add_image_or_placeholder(
+        slide, "portrait",
+        Inches(0.9), Inches(1.1), Inches(4.6), Inches(5.3),
+        "[ Portrait of Josef Sudek \u2014 insert image here ]",
+        placeholder_size=16)
 
     # Title + short intro on the right
     tf = _add_textbox(slide, Inches(6.0), Inches(1.4), Inches(6.4), Inches(1.4))
@@ -283,23 +336,12 @@ def add_photo_slide(prs, number, title, year, tag, notes):
     slide = _blank(prs)
     _set_gradient_background(slide)
 
-    # Large image placeholder
-    ph = slide.shapes.add_shape(
-        MSO_SHAPE.RECTANGLE,
-        Inches(0.7), Inches(0.7), Inches(8.4), Inches(6.1))
-    ph.fill.solid()
-    ph.fill.fore_color.rgb = PLACEHOLDER
-    ph.line.color.rgb = MUTED
-    ph.line.width = Pt(1)
-    ph.shadow.inherit = False
-    ptf = ph.text_frame
-    ptf.word_wrap = True
-    ptf.vertical_anchor = MSO_ANCHOR.MIDDLE
-    pr = ptf.paragraphs[0]
-    pr.alignment = PP_ALIGN.CENTER
-    run = pr.add_run()
-    run.text = f"[ Photo {number} \u2014 insert image here ]"
-    _style_run(run, 18, MUTED, italic=True)
+    # Large image (or labelled placeholder if the file isn't present yet)
+    _add_image_or_placeholder(
+        slide, f"photo{number:02d}",
+        Inches(0.7), Inches(0.7), Inches(8.4), Inches(6.1),
+        f"[ Photo {number} \u2014 insert image here ]",
+        placeholder_size=18)
 
     # Right-hand caption column
     cap = _add_textbox(slide, Inches(9.4), Inches(1.0), Inches(3.4), Inches(5.5))
@@ -431,12 +473,22 @@ def build(output):
 
 
 def main():
+    global IMAGE_DIR
     parser = argparse.ArgumentParser(description="Build the Josef Sudek PPTX.")
     parser.add_argument("--output", default=DEFAULT_OUTPUT,
                         help=f"Output .pptx path (default: {DEFAULT_OUTPUT})")
+    parser.add_argument("--images-dir", default=DEFAULT_IMAGE_DIR,
+                        help="Folder holding portrait.* and photo01..photo15.* "
+                             f"(default: {DEFAULT_IMAGE_DIR})")
     args = parser.parse_args()
+    IMAGE_DIR = args.images_dir
+
+    embedded = sum(1 for stem in ["portrait"] +
+                   [f"photo{n:02d}" for n in range(1, 16)]
+                   if _find_image(stem) is not None)
     count = build(args.output)
-    print(f"Wrote {args.output} with {count} slides.")
+    print(f"Wrote {args.output} with {count} slides "
+          f"({embedded}/16 images embedded from '{IMAGE_DIR}/').")
 
 
 if __name__ == "__main__":
