@@ -6,6 +6,39 @@
 
 > 把图片放进 `images/` 文件夹（命名见 `images/README.md`）后，运行 `python build_pptx.py` 自动嵌入。
 
+## 怎样真正"拿到文件"（重点）
+
+搜到的 artnet / MutualArt / 1stDibs / Artsy / invaluable 都是**拍卖卖画网站**，只能看不能存，跳过它们。
+真正能拿到文件的办法：
+
+1. **右键另存**：浏览器里任何显示出来的图，右键 →「图片另存为 / Save image as」存成 `.jpg`。课堂展示够清晰。
+2. 优先用这三个能"看到→右键能存"的来源：
+   - **Google 图片** https://images.google.com （搜下面的英文词 → 点开大图 → 右键另存）
+   - **Wikimedia Commons** https://commons.wikimedia.org/wiki/Category:Josef_Sudek （有真正的下载按钮，自由授权）
+   - **Sudek Project 档案库** https://www.sudekproject.cz/en
+3. Google 图片里点 **工具 Tools → 使用权限 Usage Rights → Creative Commons**，优先筛可自由使用的图。
+
+## 每张照片：复制这串去 Google 图片搜
+
+| 文件名 | Google 图片搜索词（直接复制） |
+|--------|------------------------------|
+| `portrait` | `Josef Sudek portrait beret` |
+| `photo01` | `Josef Sudek Saint Vitus Cathedral interior` |
+| `photo02` | `Josef Sudek Prague panorama` |
+| `photo03` | `Josef Sudek Prague night` |
+| `photo04` | `Josef Sudek Mionší forest mist` |
+| `photo05` | `Josef Sudek window of my studio` |
+| `photo06` | `Josef Sudek last rose` |
+| `photo07` | `Josef Sudek glass egg labyrinth` |
+| `photo08` | `Josef Sudek still life bread glass` |
+| `photo09` | `Josef Sudek window garden summer` |
+| `photo10` | `Josef Sudek window frost winter` |
+| `photo11` | `Josef Sudek magic garden` |
+| `photo12` | `Josef Sudek walk magic garden` |
+| `photo13` | `Josef Sudek empty street Prague` |
+| `photo14` | `Josef Sudek Invalidovna veteran` |
+| `photo15` | `Josef Sudek chair garden remembrance` |
+
 ## 最有用的总入口（覆盖面最广）
 
 | 入口 | 说明 | 链接 |
