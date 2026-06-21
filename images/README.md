@@ -30,6 +30,13 @@ Use these exact base names — the extension can be `.jpg`, `.jpeg`, `.png`,
 
 Note the two-digit numbering: `photo01`, not `photo1`.
 
+## Where to find the photos
+
+Sudek's work is still under copyright, so museums show low-res previews only.
+See [`sources.md`](sources.md) for per-image museum/archive links and search
+keywords (Sudek Project, National Gallery of Canada, MoMA, Wikimedia Commons,
+Internet Archive).
+
 ## Rebuild
 
 ```bash

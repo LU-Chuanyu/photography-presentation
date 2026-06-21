@@ -33,5 +33,8 @@ back to a labelled placeholder box, and the script prints how many of the 16
 images were embedded. See `images/README.md` for the full name-to-slide map.
 Use a different folder with `python build_pptx.py --images-dir path/to/folder`.
 
+See `images/sources.md` for per-image museum/archive links and search keywords
+to help locate each photograph.
+
 Use public-domain or properly licensed reproductions, and complete the
 image-credits slide before presenting.
