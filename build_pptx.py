@@ -21,12 +21,15 @@ import argparse
 
 from pptx import Presentation
 from pptx.dml.color import RGBColor
+from pptx.enum.shapes import MSO_SHAPE
 from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
 from pptx.util import Inches, Pt
 
 # 16:9 canvas
 SLIDE_W = Inches(13.333)
 SLIDE_H = Inches(7.5)
+
+FONT = "Calibri"
 
 # Quiet, low-saturation palette echoing Sudek's mood
 INK = RGBColor(0x20, 0x20, 0x20)        # near-black text
@@ -122,7 +125,7 @@ def _style_run(run, size, color, bold=False, italic=False):
     run.font.color.rgb = color
     run.font.bold = bold
     run.font.italic = italic
-    run.font.name = "Calibri"
+    run.font.name = FONT
 
 
 def _set_notes(slide, text):
@@ -191,7 +194,7 @@ def add_photo_slide(prs, number, title, year, tag, notes):
 
     # Large image placeholder
     ph = slide.shapes.add_shape(
-        1,  # MSO_SHAPE.RECTANGLE
+        MSO_SHAPE.RECTANGLE,
         Inches(0.7), Inches(0.7), Inches(8.4), Inches(6.1))
     ph.fill.solid()
     ph.fill.fore_color.rgb = PLACEHOLDER
