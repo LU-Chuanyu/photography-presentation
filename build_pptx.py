@@ -35,6 +35,7 @@ FONT = "Calibri"
 INK = RGBColor(0x20, 0x20, 0x20)        # near-black text
 MUTED = RGBColor(0x6E, 0x6A, 0x63)      # warm grey
 PAPER = RGBColor(0xF4, 0xF2, 0xED)      # warm off-white background
+PAPER_DEEP = RGBColor(0xE5, 0xDF, 0xD2)  # slightly deeper warm tone for gradient
 PLACEHOLDER = RGBColor(0xDF, 0xDB, 0xD2)  # image placeholder fill
 TAG = RGBColor(0x8A, 0x6D, 0x3B)        # warm brown accent for trait tags
 
@@ -112,6 +113,32 @@ def _set_background(slide, color):
     fill.fore_color.rgb = color
 
 
+def _set_gradient_background(slide, top_color=PAPER, bottom_color=PAPER_DEEP):
+    """Apply a soft, low-contrast vertical gradient so slides feel less flat."""
+    fill = slide.background.fill
+    fill.gradient()
+    stops = fill.gradient_stops
+    stops[0].position = 0.0
+    stops[0].color.rgb = top_color
+    stops[1].position = 1.0
+    stops[1].color.rgb = bottom_color
+    try:
+        fill.gradient_angle = 90.0  # top -> bottom
+    except (AttributeError, ValueError):
+        pass
+
+
+def _add_accent_rule(slide, top, left=Inches(1.0), width=Inches(2.4)):
+    """Thin warm-brown rule used as a quiet decorative accent."""
+    rule = slide.shapes.add_shape(
+        MSO_SHAPE.RECTANGLE, left, top, width, Pt(3))
+    rule.fill.solid()
+    rule.fill.fore_color.rgb = TAG
+    rule.line.fill.background()
+    rule.shadow.inherit = False
+    return rule
+
+
 def _add_textbox(slide, left, top, width, height, anchor=MSO_ANCHOR.TOP):
     box = slide.shapes.add_textbox(left, top, width, height)
     tf = box.text_frame
@@ -138,7 +165,7 @@ def _blank(prs):
 
 def add_cover(prs):
     slide = _blank(prs)
-    _set_background(slide, PAPER)
+    _set_gradient_background(slide)
     tf = _add_textbox(slide, Inches(1), Inches(2.4), Inches(11.33), Inches(2.7),
                       anchor=MSO_ANCHOR.MIDDLE)
     p = tf.paragraphs[0]
@@ -159,6 +186,9 @@ def add_cover(prs):
     r3.text = "Josef Sudek \u2014 the Poet of Prague"
     _style_run(r3, 16, TAG)
 
+    # Centered accent rule under the title block
+    _add_accent_rule(slide, Inches(5.3), left=Inches(5.67), width=Inches(2.0))
+
     _set_notes(slide,
                "Good morning, everyone. Today I want to introduce a photographer "
                "who saw the whole world through a single window \u2014 and who "
@@ -168,13 +198,74 @@ def add_cover(prs):
                "limitation become an artistic style? (0:30)")
 
 
+def add_portrait_slide(prs):
+    slide = _blank(prs)
+    _set_gradient_background(slide)
+
+    # Portrait image placeholder on the left
+    ph = slide.shapes.add_shape(
+        MSO_SHAPE.RECTANGLE,
+        Inches(0.9), Inches(1.1), Inches(4.6), Inches(5.3))
+    ph.fill.solid()
+    ph.fill.fore_color.rgb = PLACEHOLDER
+    ph.line.color.rgb = MUTED
+    ph.line.width = Pt(1)
+    ph.shadow.inherit = False
+    ptf = ph.text_frame
+    ptf.word_wrap = True
+    ptf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    pr = ptf.paragraphs[0]
+    pr.alignment = PP_ALIGN.CENTER
+    run = pr.add_run()
+    run.text = "[ Portrait of Josef Sudek \u2014 insert image here ]"
+    _style_run(run, 16, MUTED, italic=True)
+
+    # Title + short intro on the right
+    tf = _add_textbox(slide, Inches(6.0), Inches(1.4), Inches(6.4), Inches(1.4))
+    r = tf.paragraphs[0].add_run()
+    r.text = "Josef Sudek"
+    _style_run(r, 36, INK, bold=True)
+    psub = tf.add_paragraph()
+    rsub = psub.add_run()
+    rsub.text = "1896\u20131976 \u00b7 the Poet of Prague"
+    _style_run(rsub, 18, TAG, italic=True)
+
+    _add_accent_rule(slide, Inches(3.05), left=Inches(6.05), width=Inches(2.0))
+
+    body = _add_textbox(slide, Inches(6.0), Inches(3.4), Inches(6.4), Inches(3.2))
+    lines = [
+        "Czech photographer who spent his life in Prague.",
+        "Lost his right arm in the First World War.",
+        "Worked one-handed with a large-format view camera.",
+        "Turned that limitation into a slow, quiet, poetic style.",
+    ]
+    first = True
+    for line in lines:
+        p = body.paragraphs[0] if first else body.add_paragraph()
+        first = False
+        rl = p.add_run()
+        rl.text = line
+        _style_run(rl, 18, INK)
+        p.space_after = Pt(10)
+
+    _set_notes(slide,
+               "This is the man himself: Josef Sudek, born in 1896, who lived "
+               "and worked almost his entire life in Prague. He made every one "
+               "of his photographs with a single hand, using a heavy "
+               "large-format camera. Keep his face in mind as we look at how he "
+               "turned a wartime injury into one of the most poetic styles in "
+               "photography.")
+
+
 def add_text_slide(prs, title, body_lines, notes):
     slide = _blank(prs)
-    _set_background(slide, PAPER)
+    _set_gradient_background(slide)
     tf = _add_textbox(slide, Inches(1), Inches(0.9), Inches(11.33), Inches(1.2))
     r = tf.paragraphs[0].add_run()
     r.text = title
     _style_run(r, 32, INK, bold=True)
+
+    _add_accent_rule(slide, Inches(1.95))
 
     body = _add_textbox(slide, Inches(1), Inches(2.3), Inches(11.33), Inches(4.4))
     first = True
@@ -190,7 +281,7 @@ def add_text_slide(prs, title, body_lines, notes):
 
 def add_photo_slide(prs, number, title, year, tag, notes):
     slide = _blank(prs)
-    _set_background(slide, PAPER)
+    _set_gradient_background(slide)
 
     # Large image placeholder
     ph = slide.shapes.add_shape(
@@ -200,6 +291,7 @@ def add_photo_slide(prs, number, title, year, tag, notes):
     ph.fill.fore_color.rgb = PLACEHOLDER
     ph.line.color.rgb = MUTED
     ph.line.width = Pt(1)
+    ph.shadow.inherit = False
     ptf = ph.text_frame
     ptf.word_wrap = True
     ptf.vertical_anchor = MSO_ANCHOR.MIDDLE
@@ -238,11 +330,13 @@ def add_photo_slide(prs, number, title, year, tag, notes):
 
 def add_credits_slide(prs):
     slide = _blank(prs)
-    _set_background(slide, PAPER)
+    _set_gradient_background(slide)
     tf = _add_textbox(slide, Inches(1), Inches(0.9), Inches(11.33), Inches(1.0))
     r = tf.paragraphs[0].add_run()
     r.text = "Image Credits"
     _style_run(r, 30, INK, bold=True)
+
+    _add_accent_rule(slide, Inches(1.85))
 
     body = _add_textbox(slide, Inches(1), Inches(2.1), Inches(11.33), Inches(4.6))
     first = True
@@ -268,7 +362,10 @@ def build(output):
     # 1. Cover
     add_cover(prs)
 
-    # 2. Who was Josef Sudek?
+    # 2. Portrait of the photographer
+    add_portrait_slide(prs)
+
+    # 3. Who was Josef Sudek?
     add_text_slide(
         prs, "Who Was Josef Sudek?",
         ["Born in Bohemia, 1896.",
