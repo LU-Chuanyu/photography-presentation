@@ -1,66 +1,109 @@
-# Photography Course Presentation Plan
+# Josef Sudek 摄影展示 — 主题与 15 分钟 Presentation 计划
 
-## 1) Goal
-Deliver a clear, beginner-friendly presentation that explains how to make stronger photos using composition, light, and storytelling.
+## 一、主题（Theme）
 
-## 2) Audience
-Photography course classmates and instructor (mixed beginner/intermediate level).
+**主标题：《窗、光与寂静——Josef Sudek 的布拉格诗学》**
+英文：*Window, Light and Silence: The Poetic World of Josef Sudek*
 
-## 3) Duration
-12–15 minutes total + 2–3 minutes Q&A.
+**核心立意：**
+Josef Sudek 被称为"布拉格的诗人"（The Poet of Prague）。他在一战中失去右臂，却用一只手和大画幅相机，把日常的窗台、花园、街道与静物拍出沉静、忧郁又抒情的氛围。本次以一条主线——**"光如何把平凡变成诗"**——串联他不同时期、不同题材的作品，在 15 张照片中尽可能多地覆盖其摄影风格。
 
-## 4) Slide-by-slide outline
+**为什么选这个主题：**
+- 既能概括最著名的窗景系列，又留出空间展示其他面向。
+- "光与寂静"是贯穿其全部作品的共同语言，逻辑统一、易讲。
+- 适合 15 分钟体量：一条主线 + 多个题材分支。
 
-1. **Title: Seeing with Intention** (1 min)  
-   - Introduce topic and personal motivation
-   - Preview the 3 core skills: composition, light, story
+---
 
-2. **What Makes a Photo Memorable?** (1.5 min)  
-   - Emotional impact
-   - Technical clarity
-   - Visual focus
+## 二、贯穿全场的 3 条讲解线索
 
-3. **Composition Basics** (2 min)  
-   - Rule of thirds
-   - Leading lines
-   - Framing and negative space
+1. **光（Light）** — 几乎只用自然光，强调柔和、漫射、雾气感。
+2. **寂静与孤独（Silence & Solitude）** — 画面常无人，氛围沉静、忧郁。
+3. **耐心与日常（Patience & the Everyday）** — 同一扇窗、同一组静物反复拍摄多年。
 
-4. **Light as the Main Tool** (2 min)  
-   - Soft vs. hard light
-   - Direction of light
-   - Golden hour and indoor window light
+每张照片讲解时从这三点里挑 1–2 点切入，逻辑不散。
 
-5. **Camera Settings that Matter Most** (2 min)  
-   - Aperture for depth of field
-   - Shutter speed for motion control
-   - ISO and noise trade-offs
+---
 
-6. **Storytelling Through a Photo Series** (1.5 min)  
-   - Wide shot, medium shot, detail shot
-   - Consistent subject and mood
+## 三、15 张照片的板块划分（覆盖最多风格）
 
-7. **Common Beginner Mistakes** (1.5 min)  
-   - Cluttered background
-   - Missed focus
-   - Flat midday light
+| 板块 | 风格 / 题材 | 张数 | 代表方向 |
+|------|------------|------|----------|
+| 1. 窗景系列 | 雾气朦胧、抒情、最具标志性 | 3 | *The Window of My Studio* 系列、窗上的露珠 |
+| 2. 静物 | 玻璃杯、面包、鸡蛋等简单物件的光影 | 3 | 工作室静物，光线柔和神秘 |
+| 3. 布拉格城市 / 建筑 | 圣维特大教堂、街道、夜景、雾 | 3 | 城市风光与氛围 |
+| 4. 花园 / "魔法花园" | 杂乱诗意的私人花园 | 2 | 自然中的混沌与生命 |
+| 5. 全景作品 | 宽幅相机拍的布拉格与风景 | 2 | 技术广度与视野 |
+| 6. 早期 / 纪实 | 早期纪实、退伍军人 / 伤残题材 | 2 | 风格演变的起点 |
 
-8. **Before/After Case Study** (2 min)  
-   - Show one weak image and improved version
-   - Explain exactly what changed
+---
 
-9. **Practical 7-Day Improvement Plan** (1 min)  
-   - Daily shooting prompt
-   - Quick review routine
+## 四、15 张照片候选清单（草案，待逐张确认）
 
-10. **Conclusion + Q&A** (1 min)  
-    - Recap 3 key takeaways
-    - Invite questions
+> 说明：以下为按板块整理的候选作品方向。最终展示时请使用公有领域或已获授权的高清图片，并在末页统一标注来源/版权。
 
-## 5) PowerPoint build checklist
+**板块 1 — 窗景系列（3 张）**
+1. *The Window of My Studio*（工作室之窗）系列代表作 — 凝结水汽、模糊花园轮廓。
+2. 窗上露珠 / 雨痕特写 — 光在玻璃上的折射与抽象感。
+3. 透过窗看花园的四季之一 — 私密视角与"室内看世界"的隔阂感。
 
-- Keep one key message per slide
-- Use large, readable text (minimum ~28 pt for main content)
-- Use high-resolution sample photos (no watermarks)
-- Keep color palette simple (2–3 main colors)
-- Add short speaker notes per slide
-- Use simple transitions only (avoid distracting effects)
+**板块 2 — 静物（3 张）**
+4. 玻璃杯与水 — 透明物体中的微光。
+5. 面包、鸡蛋等桌面静物 — 朴素物件的庄重感。
+6. 工作室桌面的纸卷 / 物件组合 — 神秘的暗调光线。
+
+**板块 3 — 布拉格城市 / 建筑（3 张）**
+7. 圣维特大教堂内部光束 — 宏大空间中的神圣光线。
+8. 雾中 / 夜间的布拉格街道 — 氛围与孤独。
+9. 查理大桥或河岸夜景 — 城市的诗意一面。
+
+**板块 4 — 魔法花园（2 张）**
+10. 私人花园中的枝叶 / 雕像 — 杂乱中的生命力。
+11. 花园角落的光影 — 自然与时间的痕迹。
+
+**板块 5 — 全景作品（2 张）**
+12. 布拉格全景（宽幅）— 展示大画幅 / 宽幅技术。
+13. 风景 / 树林全景 — 宽幅构图下的空旷与寂静。
+
+**板块 6 — 早期 / 纪实（2 张）**
+14. 早期纪实作品 — 风格起点，较直接的记录。
+15. 退伍军人 / 伤残主题作品 — 个人经历与情感投射。
+
+---
+
+## 五、15 分钟时间分配（Slide-by-slide）
+
+总计约 16 张幻灯片，约 15 分钟：
+
+1. **封面（0:30）** — 主题标题 + 一张标志性窗景作品。
+2. **谁是 Josef Sudek（1:30）** — 布拉格、一战失臂、一只手的大画幅摄影、"布拉格的诗人"。
+3. **主线引入（1:00）** — 核心问题："他如何用光把平凡变成诗？" + 介绍 3 条线索。
+4. **板块 1：窗景系列（2:30）** — 3 张，讲朦胧、私密、抒情。
+5. **板块 2：静物（2:00）** — 3 张，讲简单物件 + 神秘光线。
+6. **板块 3：布拉格城市（2:00）** — 3 张，讲雾、夜、建筑氛围。
+7. **板块 4：魔法花园（1:30）** — 2 张，讲混乱中的诗意。
+8. **板块 5：全景作品（1:30）** — 2 张，讲技术广度与视野。
+9. **板块 6：早期 / 纪实（1:00）** — 2 张，讲风格起点与演变。
+10. **风格总结（1:00）** — 归纳视觉语言：光、寂静、耐心、孤独感。
+11. **结尾 + Q&A（1:00）** — 一句话收束 + 一张最打动人的作品 + 提问。
+
+---
+
+## 六、PowerPoint 制作清单
+
+- 每页一个核心信息，文字精简。
+- 图片为主、文字为辅；图片尽量满屏、高分辨率。
+- 配色低饱和、安静（黑/白/灰/暖棕），呼应 Sudek 的氛围。
+- 每页附简短演讲备注。
+- 过渡简单（淡入淡出），避免花哨效果。
+- 末页统一标注图片来源与版权信息。
+
+---
+
+## 七、下一步
+
+- [ ] 确认主题与板块分配（3+3+3+2+2+2）。
+- [ ] 逐张敲定 15 张的最终清单（标题 / 年份 / 选用理由 / 讲解要点）。
+- [ ] 选择演讲稿语言（中文 / 英文 / 中英对照）。
+- [ ] 撰写每页演讲稿（更新 `presentation-script.md`）。
+- [ ] 生成完整版 PPT。
