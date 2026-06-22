@@ -52,69 +52,131 @@ TAG = RGBColor(0x8A, 0x6D, 0x3B)        # warm brown accent for trait tags
 
 DEFAULT_OUTPUT = "Josef-Sudek-Presentation.pptx"
 
-# Each photo slide: (number, title, year, trait tag, speaker notes)
+# Each photo slide: (number, title, year, trait tag, speaker notes).
+# Speaker notes are a list of (text, kind) segments where kind is either
+# "must" (core lines you should always say) or "opt" (optional lines you can
+# add to fill time, or skip if you are running long). _set_photo_notes renders
+# "must" segments in dark text and "opt" segments in grey italic, with a legend.
 PHOTOS = [
-    (1, "Saint Vitus Cathedral, interior", "c. 1924–1928", "SLOW",
-     "First, SLOW. The view camera demanded long exposures, so Sudek learned to "
-     "wait. A long exposure gathers soft, diffused light the eye barely notices "
-     "\u2014 light becomes almost solid. This patience is the foundation of "
-     "everything that follows."),
-    (2, "Prague Panorama, misty city", "c. 1950s–1960s", "SLOW",
-     "Here, slowness turns fog and damp air into something dreamlike. This is "
-     "from his panoramic work \u2014 a wide, demanding format. The mist isn't a "
-     "problem to fix; it is the subject."),
-    (3, "Prague at Night", "c. 1950s", "SLOW",
-     "This near-darkness was only possible with a long exposure on a tripod. The "
-     "empty, glowing street shows how Sudek used time itself as a tool \u2014 "
-     "letting faint light slowly build into a quiet scene."),
-    (4, "Mionší Forest, mist in the woods", "c. 1950s", "SLOW",
-     "In a misty forest, the stillness becomes visible. The soft grey light and "
-     "motionless trees are the trace of a long, patient exposure. Slowness was "
-     "never a weakness \u2014 it was how he found poetry in ordinary light."),
-    (5, "The Window of My Studio", "c. 1940–1948", "CLOSE",
-     "Second, CLOSE. Because movement was difficult, Sudek worked within arm's "
-     "reach. His most famous motif: the window of his studio, covered in mist and "
-     "droplets. A single pane of glass became an entire universe."),
-    (6, "The Last Rose", "c. 1956", "CLOSE",
-     "On his table, a single fading rose. Seen this closely, an ordinary flower "
-     "becomes a meditation on beauty and time \u2014 one of his most poetic still "
-     "lifes."),
-    (7, "Glass and Egg (Labyrinths)", "c. 1950s", "CLOSE",
-     "In his still lifes, simple objects hold tiny, glowing worlds of light. A "
-     "glass, an egg \u2014 close up, their surfaces become mysterious. Closeness "
-     "was his limitation, but also his way of seeing the extraordinary in the "
-     "plain."),
-    (8, "Still life with Bread and Glass", "c. 1950s", "CLOSE",
-     "Bread and a glass on a dark table. Humble, everyday things \u2014 yet lit "
-     "so gently they feel almost sacred. Intimacy as a method: the closer he "
-     "looked, the more meaning he found."),
-    (9, "Window \u2014 view to the garden, summer", "c. 1940s", "REPEATED",
-     "Third, REPEATED. Sudek returned to the same subjects for years. Here is the "
-     "view from his studio window onto the garden in one season, full and green."),
-    (10, "Window \u2014 frost, winter", "c. 1940s–1950s", "REPEATED",
-     "The same window in winter, the glass laced with frost. Same frame, "
-     "completely different mood. Repetition let him discover endless variation "
-     "inside a single point of view."),
-    (11, "A Walk in the Magic Garden I", "c. 1954", "REPEATED",
-     "He gave the same devotion to his small, wild garden \u2014 his 'magic "
-     "garden.' He photographed it again and again, finding life in its overgrown "
-     "corners."),
-    (12, "A Walk in the Magic Garden II", "c. 1960s", "REPEATED",
-     "The garden again, at a different hour and light. Repetition was not a lack "
-     "of ideas \u2014 it was depth. By doing less, again and again, he saw more "
-     "than photographers who do everything once."),
-    (13, "Prague Panorama \u2014 empty street/square", "c. 1950s–1960s", "SOLITARY",
-     "Fourth, SOLITARY. Sudek's images are almost always empty of people. This "
-     "empty square feels quiet, inward, a little melancholy \u2014 a whole city "
-     "holding its breath."),
-    (14, "Veteran from the Invalidovna", "c. 1922–1927", "SOLITARY",
-     "This earlier, documentary work shows a war veteran at the Invalidovna in "
-     "Prague. It connects directly to Sudek's own war experience and his lost "
-     "arm. Here, solitude is personal \u2014 where his whole sensibility begins."),
-    (15, "A Chair in the Magic Garden / Remembrance", "c. 1950s", "SOLITARY",
-     "I'll end with this: a single empty chair in the garden. No people, just "
-     "pure silence and memory. For me, this is the emotional heart of his entire "
-     "body of work."),
+    (1, "Saint Vitus Cathedral, interior", "c. 1924–1928", "SLOW", [
+        ("First, SLOW. The view camera demanded long exposures, so Sudek learned "
+         "to wait. A long exposure gathers soft, diffused light the eye barely "
+         "notices \u2014 light becomes almost solid. This patience is the "
+         "foundation of everything that follows.", "must"),
+        ("Look how there are almost no hard shadows \u2014 the light seems to "
+         "settle into the stone. Exposures like this could run for many minutes.",
+         "opt"),
+    ]),
+    (2, "Prague Panorama, misty city", "c. 1950s–1960s", "SLOW", [
+        ("Here, slowness turns fog and damp air into something dreamlike. This is "
+         "from his panoramic work \u2014 a wide, demanding format. The mist isn't "
+         "a problem to fix; it is the subject.", "must"),
+        ("That long horizontal frame was unusual for its time, and it makes the "
+         "city feel like it goes on forever. The damp Prague air was almost a "
+         "collaborator for him.", "opt"),
+    ]),
+    (3, "Prague at Night", "c. 1950s", "SLOW", [
+        ("This near-darkness was only possible with a long exposure on a tripod. "
+         "The empty, glowing street shows how Sudek used time itself as a tool "
+         "\u2014 letting faint light slowly build into a quiet scene.", "must"),
+        ("If you tried to shoot this by hand, you'd get nothing but a black "
+         "frame. The few points of light almost feel like they're breathing.",
+         "opt"),
+    ]),
+    (4, "Mionší Forest, mist in the woods", "c. 1950s", "SLOW", [
+        ("In a misty forest, the stillness becomes visible. The soft grey light "
+         "and motionless trees are the trace of a long, patient exposure. "
+         "Slowness was never a weakness \u2014 it was how he found poetry in "
+         "ordinary light.", "must"),
+        ("There's no wind, no movement, nothing dramatic \u2014 and that's "
+         "exactly the point. He's photographing the quiet itself.", "opt"),
+    ]),
+    (5, "The Window of My Studio", "c. 1940–1948", "CLOSE", [
+        ("Second, CLOSE. Because movement was difficult, Sudek worked within "
+         "arm's reach. His most famous motif: the window of his studio, covered "
+         "in mist and droplets. A single pane of glass became an entire "
+         "universe.", "must"),
+        ("He made dozens of versions of this window over the years, often just "
+         "looking out at his garden. He didn't need to travel to find a world "
+         "\u2014 it was right in front of him.", "opt"),
+    ]),
+    (6, "The Last Rose", "c. 1956", "CLOSE", [
+        ("On his table, a single fading rose. Seen this closely, an ordinary "
+         "flower becomes a meditation on beauty and time \u2014 one of his most "
+         "poetic still lifes.", "must"),
+        ("It's not a fresh, perfect bloom \u2014 it's wilting, and that's the "
+         "whole point. He found beauty in the moment things begin to fade.",
+         "opt"),
+    ]),
+    (7, "Glass and Egg (Labyrinths)", "c. 1950s", "CLOSE", [
+        ("In his still lifes, simple objects hold tiny, glowing worlds of light. "
+         "A glass, an egg \u2014 close up, their surfaces become mysterious. "
+         "Closeness was his limitation, but also his way of seeing the "
+         "extraordinary in the plain.", "must"),
+        ("He called some of these his 'Labyrinths.' Spend a moment on the "
+         "reflections \u2014 there's a whole little landscape inside that glass.",
+         "opt"),
+    ]),
+    (8, "Still life with Bread and Glass", "c. 1950s", "CLOSE", [
+        ("Bread and a glass on a dark table. Humble, everyday things \u2014 yet "
+         "lit so gently they feel almost sacred. Intimacy as a method: the closer "
+         "he looked, the more meaning he found.", "must"),
+        ("This is the kind of food you'd find in any modest Prague kitchen. Sudek "
+         "treats it with the same care a painter might give a portrait.", "opt"),
+    ]),
+    (9, "Window \u2014 view to the garden, summer", "c. 1940s", "REPEATED", [
+        ("Third, REPEATED. Sudek returned to the same subjects for years. Here is "
+         "the view from his studio window onto the garden in one season, full and "
+         "green.", "must"),
+        ("Keep this exact frame in your memory for a second \u2014 because the "
+         "next image is the very same window. He photographed it over and over "
+         "across the seasons.", "opt"),
+    ]),
+    (10, "Window \u2014 frost, winter", "c. 1940s–1950s", "REPEATED", [
+        ("The same window in winter, the glass laced with frost. Same frame, "
+         "completely different mood. Repetition let him discover endless "
+         "variation inside a single point of view.", "must"),
+        ("Same window, same spot \u2014 only the season has changed, and suddenly "
+         "it's a different world. This is what patience with one subject can "
+         "reveal.", "opt"),
+    ]),
+    (11, "A Walk in the Magic Garden I", "c. 1954", "REPEATED", [
+        ("He gave the same devotion to his small, wild garden \u2014 his 'magic "
+         "garden.' He photographed it again and again, finding life in its "
+         "overgrown corners.", "must"),
+        ("It was just a modest, tangled little garden in Prague, nothing grand. "
+         "But to him it was endless.", "opt"),
+    ]),
+    (12, "A Walk in the Magic Garden II", "c. 1960s", "REPEATED", [
+        ("The garden again, at a different hour and light. Repetition was not a "
+         "lack of ideas \u2014 it was depth. By doing less, again and again, he "
+         "saw more than photographers who do everything once.", "must"),
+        ("Same garden, different day, different light \u2014 and a completely "
+         "different feeling. For Sudek, returning was a form of looking deeper.",
+         "opt"),
+    ]),
+    (13, "Prague Panorama \u2014 empty street/square", "c. 1950s–1960s", "SOLITARY", [
+        ("Fourth, SOLITARY. Sudek's images are almost always empty of people. "
+         "This empty square feels quiet, inward, a little melancholy \u2014 a "
+         "whole city holding its breath.", "must"),
+        ("Notice there's not a single person in the frame. That emptiness isn't "
+         "lonely exactly \u2014 it leaves room for you, the viewer.", "opt"),
+    ]),
+    (14, "Veteran from the Invalidovna", "c. 1922–1927", "SOLITARY", [
+        ("This earlier, documentary work shows a war veteran at the Invalidovna "
+         "in Prague. It connects directly to Sudek's own war experience and his "
+         "lost arm. Here, solitude is personal \u2014 where his whole sensibility "
+         "begins.", "must"),
+        ("Remember, Sudek lost his own arm in that same war. When he photographs "
+         "this man, he's also, in a way, photographing himself.", "opt"),
+    ]),
+    (15, "A Chair in the Magic Garden / Remembrance", "c. 1950s", "SOLITARY", [
+        ("I'll end with this: a single empty chair in the garden. No people, just "
+         "pure silence and memory. For me, this is the emotional heart of his "
+         "entire body of work.", "must"),
+        ("An empty chair always suggests someone who was there and is now gone. "
+         "Let it sit in silence for a second before we move on.", "opt"),
+    ]),
 ]
 
 
@@ -168,6 +230,45 @@ def _style_run(run, size, color, bold=False, italic=False):
 
 def _set_notes(slide, text):
     slide.notes_slide.notes_text_frame.text = text
+
+
+# Colours used to mark speaker notes on the photo slides.
+NOTE_MUST = INK            # core lines to always say (dark)
+NOTE_OPT = RGBColor(0x9A, 0x6A, 0x2E)  # optional / time-filler lines (warm grey-brown)
+
+
+def _set_photo_notes(slide, segments):
+    """Render photo speaker notes, colour-coding must-say vs optional lines.
+
+    `segments` is a list of (text, kind) where kind is "must" or "opt".
+    A short legend explains the colour code so the presenter can tell at a
+    glance which sentences are essential and which are time-fillers.
+    """
+    tf = slide.notes_slide.notes_text_frame
+    tf.clear()
+
+    legend = tf.paragraphs[0]
+    lr = legend.add_run()
+    lr.text = ("Legend \u2014 dark = must say   \u00b7   "
+               "brown italic = optional (say only if you need to fill time)")
+    lr.font.name = FONT
+    lr.font.size = Pt(11)
+    lr.font.bold = True
+    lr.font.color.rgb = NOTE_OPT
+
+    body = tf.add_paragraph()
+    for text, kind in segments:
+        run = body.add_run()
+        if kind == "opt":
+            run.text = "  (optional) " + text + " "
+            run.font.color.rgb = NOTE_OPT
+            run.font.italic = True
+        else:
+            run.text = text + " "
+            run.font.color.rgb = NOTE_MUST
+        run.font.name = FONT
+        run.font.size = Pt(14)
+
 
 
 def _blank(prs):
@@ -373,7 +474,7 @@ def add_photo_slide(prs, number, title, year, tag, notes):
     ryear.text = year
     _style_run(ryear, 14, MUTED, italic=True)
 
-    _set_notes(slide, notes)
+    _set_photo_notes(slide, notes)
 
 
 # Suggested holding institution / archive for each photograph. Sudek's work is
